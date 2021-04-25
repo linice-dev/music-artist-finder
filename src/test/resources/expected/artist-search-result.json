@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "artistType": "Artist",
+      "artistName": "ABBA",
+      "artistLinkUrl": "https://music.apple.com/us/artist/abba/372976?uo=4",
+      "artistId": 372976,
+      "amgArtistId": 3492,
+      "primaryGenreName": "Pop",
+      "primaryGenreId": 14
+    },
+    {
+      "artistType": "Software Artist",
+      "artistName": "ABBA",
+      "artistLinkUrl": "https://apps.apple.com/us/developer/abba/id1438722470?uo=4",
+      "artistId": 1438722470
+    }
+  ]
+}
