@@ -57,10 +57,7 @@
             </column>
         </createTable>
 
-        <createSequence schemaName="music_artist_finder" sequenceName="artist_id_sequence"/>
-
         <rollback>
-            <dropSequence schemaName="music_artist_finder" sequenceName="artist_id_sequence"/>
             <dropTable schemaName="music_artist_finder" tableName="artist"/>
         </rollback>
     </changeSet>

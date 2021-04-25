@@ -8,7 +8,6 @@ import org.immutables.value.Value.Immutable;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Immutable
-@Value.Style()
 @JsonSerialize(as = ImmutableUserFavouriteArtist.class)
 public interface UserFavouriteArtist {
 

@@ -2,7 +2,6 @@ package com.linicedev.music_artist_finder.user.infrastructure;
 
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +17,4 @@ public interface UserCrudRepository extends CrudRepository<UserEntity, Long>, Us
     @Override
     UserEntity save(UserEntity entity);
 
-    @Override
-    @Query(value = "select music_artist_finder.user_id_sequence.nextval from dual", nativeQuery = true)
-    Long findUserIdNextValue();
 }

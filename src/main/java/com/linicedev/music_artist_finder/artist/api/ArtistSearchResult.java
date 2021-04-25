@@ -3,14 +3,12 @@ package com.linicedev.music_artist_finder.artist.api;
 import java.util.List;
 import java.util.Optional;
 
-import org.immutables.value.Value;
 import org.immutables.value.Value.Immutable;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.linicedev.music_artist_finder.itunes.infrastructure.client.ArtistSearchResponse;
 
 @Immutable
-@Value.Style()
 @JsonSerialize(as = ImmutableArtistSearchResult.class)
 public interface ArtistSearchResult {
 

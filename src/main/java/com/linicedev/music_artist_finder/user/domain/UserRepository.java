@@ -8,6 +8,4 @@ public interface UserRepository {
 
     UserEntity save(UserEntity entity);
 
-    Long findUserIdNextValue();
-
 }

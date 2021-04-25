@@ -57,27 +57,28 @@ public class ArtistService {
     }
 
     private AlbumEntity createOrUpdateAlbumEntity(TopAlbumsResponse topAlbum) {
-        AlbumEntity albumEntity = albumRepository.findById(topAlbum.getArtistId())
-                                      .orElse(new AlbumEntity(
-                                          topAlbum.getCollectionId(),
-                                          topAlbum.getAmgArtistId(),
-                                          topAlbum.getArtistId(),
-                                          topAlbum.getArtistName(),
-                                          topAlbum.getCollectionName(),
-                                          topAlbum.getCollectionCensoredName(),
-                                          topAlbum.getArtistViewUrl(),
-                                          topAlbum.getCollectionViewUrl(),
-                                          topAlbum.getArtworkUrl60().orElse(null),
-                                          topAlbum.getArtworkUrl100().orElse(null),
-                                          topAlbum.getCollectionPrice(),
-                                          topAlbum.getCollectionExplicitness(),
-                                          topAlbum.getTrackCount(),
-                                          topAlbum.getCopyright(),
-                                          topAlbum.getCountry(),
-                                          topAlbum.getCurrency(),
-                                          topAlbum.getReleaseDate(),
-                                          topAlbum.getPrimaryGenreName()
-                                      ));
+        AlbumEntity albumEntity =
+            albumRepository.findById(topAlbum.getArtistId())
+                .orElse(new AlbumEntity(
+                    topAlbum.getCollectionId(),
+                    topAlbum.getAmgArtistId(),
+                    topAlbum.getArtistId(),
+                    topAlbum.getArtistName(),
+                    topAlbum.getCollectionName(),
+                    topAlbum.getCollectionCensoredName(),
+                    topAlbum.getArtistViewUrl(),
+                    topAlbum.getCollectionViewUrl(),
+                    topAlbum.getArtworkUrl60().orElse(null),
+                    topAlbum.getArtworkUrl100().orElse(null),
+                    topAlbum.getCollectionPrice(),
+                    topAlbum.getCollectionExplicitness(),
+                    topAlbum.getTrackCount(),
+                    topAlbum.getCopyright(),
+                    topAlbum.getCountry(),
+                    topAlbum.getCurrency(),
+                    topAlbum.getReleaseDate(),
+                    topAlbum.getPrimaryGenreName()
+                ));
 
         albumEntity.update(topAlbum.getCollectionId(),
             topAlbum.getAmgArtistId(),
