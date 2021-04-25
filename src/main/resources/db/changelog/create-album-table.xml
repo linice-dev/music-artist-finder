@@ -1,0 +1,67 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet id="create-user-table" author="lina">
+        <createTable schemaName="music_artist_finder" tableName="album">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="amg_artist_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="artist_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="artist_name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="collection_name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="collection_censored_name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="artist_view_url" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="collection_view_url" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="artwork_url60" type="text"/>
+            <column name="artwork_url100" type="text"/>
+            <column name="collection_price" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="collection_explicitness" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="track_count" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="copyright" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="release_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="primary_genre_name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createSequence schemaName="music_artist_finder" sequenceName="artist_id_sequence"/>
+
+        <rollback>
+            <dropSequence schemaName="music_artist_finder" sequenceName="artist_id_sequence"/>
+            <dropTable schemaName="music_artist_finder" tableName="artist"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

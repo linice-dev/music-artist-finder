@@ -5,15 +5,18 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.linicedev.music_artist_finder.api.ArtistSearchResult;
-import com.linicedev.music_artist_finder.api.ArtistSearchResult.Artist;
-import com.linicedev.music_artist_finder.api.IllegalRequestParameterException;
-import com.linicedev.music_artist_finder.api.ImmutableArtistSearchResult;
+import com.linicedev.music_artist_finder.artist.api.ArtistSearchResult;
+import com.linicedev.music_artist_finder.artist.api.ArtistSearchResult.Artist;
+import com.linicedev.music_artist_finder.artist.api.ArtistTopAlbums;
+import com.linicedev.music_artist_finder.artist.api.IllegalRequestParameterException;
+import com.linicedev.music_artist_finder.artist.api.ImmutableArtistSearchResult;
 import com.linicedev.music_artist_finder.artist.domain.ArtistService;
 import com.linicedev.music_artist_finder.itunes.infrastructure.client.ArtistSearchResponse;
 
 @Service
+@Transactional
 public class ArtistApplicationService {
 
     private final ArtistService artistService;
@@ -34,6 +37,10 @@ public class ArtistApplicationService {
         return ImmutableArtistSearchResult.builder()
                    .addAllResults(artists)
                    .build();
+    }
+
+    public ArtistTopAlbums findArtistTopAlbums(Long artistId) {
+        return ArtistTopAlbums.from(artistService.findArtistTopAlbums(artistId));
     }
 
     private void assertSearchQueryParameterIsValid(String searchQueryParameter) {

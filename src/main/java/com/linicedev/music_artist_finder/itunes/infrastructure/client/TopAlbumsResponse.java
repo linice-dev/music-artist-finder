@@ -2,6 +2,7 @@ package com.linicedev.music_artist_finder.itunes.infrastructure.client;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.immutables.value.Value.Immutable;
 
@@ -32,15 +33,15 @@ public interface TopAlbumsResponse {
 
     String getCollectionViewUrl();
 
-    String getArtworkUrl60();
+    Optional<String> getArtworkUrl60();
 
-    String getArtworkUrl100();
+    Optional<String> getArtworkUrl100();
 
     BigDecimal getCollectionPrice();
 
     String getCollectionExplicitness();
 
-    Long getTrackCount();
+    Integer getTrackCount();
 
     String getCopyright();
 

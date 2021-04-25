@@ -1,4 +1,4 @@
-package com.linicedev.music_artist_finder.api;
+package com.linicedev.music_artist_finder.artist.api;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 

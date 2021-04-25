@@ -16,10 +16,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.linicedev.music_artist_finder.api.ArtistSearchResult;
-import com.linicedev.music_artist_finder.api.IllegalRequestParameterException;
+import com.linicedev.music_artist_finder.album.domain.AlbumRepository;
+import com.linicedev.music_artist_finder.artist.api.ArtistSearchResult;
+import com.linicedev.music_artist_finder.artist.api.IllegalRequestParameterException;
 import com.linicedev.music_artist_finder.artist.domain.ArtistService;
 import com.linicedev.music_artist_finder.itunes.infrastructure.client.HttpItunesApiClient;
+import com.linicedev.music_artist_finder.itunes.infrastructure.client.HttpItunesApiClientWrapper;
+import com.linicedev.music_artist_finder.lock.domain.ApiLockRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class ArtistApplicationServiceTest {
@@ -27,11 +30,18 @@ public class ArtistApplicationServiceTest {
     @Mock
     private HttpItunesApiClient httpItunesApiClient;
 
+    @Mock
+    private ApiLockRepository apiLockRepository;
+
+    @Mock
+    private AlbumRepository albumRepository;
+
     private ArtistApplicationService artistApplicationService;
 
     @BeforeEach
     void setUp() {
-        ArtistService artistService = new ArtistService(httpItunesApiClient);
+        HttpItunesApiClientWrapper httpItunesApiClientWrapper = new HttpItunesApiClientWrapper(apiLockRepository, httpItunesApiClient);
+        ArtistService artistService = new ArtistService(3, 7, httpItunesApiClientWrapper, albumRepository);
         artistApplicationService = new ArtistApplicationService(artistService);
     }
 

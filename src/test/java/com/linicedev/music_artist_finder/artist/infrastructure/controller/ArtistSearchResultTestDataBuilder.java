@@ -13,10 +13,10 @@ import static com.linicedev.music_artist_finder.TestDataConstants.SOFTWARE_ARTIS
 
 import java.util.List;
 
-import com.linicedev.music_artist_finder.api.ArtistSearchResult;
-import com.linicedev.music_artist_finder.api.ArtistSearchResult.Artist;
-import com.linicedev.music_artist_finder.api.ImmutableArtist;
-import com.linicedev.music_artist_finder.api.ImmutableArtistSearchResult;
+import com.linicedev.music_artist_finder.artist.api.ArtistSearchResult;
+import com.linicedev.music_artist_finder.artist.api.ArtistSearchResult.Artist;
+import com.linicedev.music_artist_finder.artist.api.ImmutableArtist;
+import com.linicedev.music_artist_finder.artist.api.ImmutableArtistSearchResult;
 
 public final class ArtistSearchResultTestDataBuilder {
 

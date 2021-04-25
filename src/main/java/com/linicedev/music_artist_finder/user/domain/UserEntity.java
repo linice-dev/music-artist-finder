@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(schema = "music_artist_finder", name = "user")
 public class UserEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5130684794353203758L;
 
     public UserEntity() {
     }

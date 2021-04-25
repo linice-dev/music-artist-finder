@@ -30,8 +30,8 @@ public class HttpItunesApiClient {
         return restTemplate.postForObject(ITUNES_BASE_URI + ARTIST_SEARCH_PATH, null, ArtistSearchResponse.class, keyword);
     }
 
-    public List<TopAlbumsResponse> findTopAlbums(Long amgArtistId, int limit) {
-        return lookupTopAlbums(amgArtistId, limit).getResults()
+    public List<TopAlbumsResponse> findTopAlbums(Long artistId, int limit) {
+        return lookupTopAlbums(artistId, limit).getResults()
                    .stream()
                    .filter(wrapper -> wrapper.get("wrapperType").equals("collection"))
                    .filter(wrapper -> wrapper.get("collectionType").equals("Album"))

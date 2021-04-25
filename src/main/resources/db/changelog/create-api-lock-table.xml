@@ -1,0 +1,26 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet id="create-user-table" author="lina">
+        <createTable schemaName="music_artist_finder" tableName="api_lock">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="lock_name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_hour" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createSequence schemaName="music_artist_finder" sequenceName="api_lock_id_sequence"/>
+
+        <rollback>
+            <dropSequence schemaName="music_artist_finder" sequenceName="api_lock_id_sequence"/>
+            <dropTable schemaName="music_artist_finder" tableName="api_lock"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
