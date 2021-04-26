@@ -24,7 +24,7 @@ Since iTunes allows calling them only 100 times per hour, whereas we have 30 mil
 by only one request at a time. This is implemented using database record pessimistic lock in order to avoid situation where multiple requests acquire counter,
 which is near limit and exceeds limit, because one request does not see changes made by other request at the same time.
 
-Also, to minimize iTunes request count, spring cache is used for iTunes http client.
+Also, to minimize iTunes request count, spring cache is used for iTunes HTTP API client.
 
 # What was used in this service
 
@@ -34,13 +34,13 @@ Also, to minimize iTunes request count, spring cache is used for iTunes http cli
 1. Spring Data
 1. H2 in memory database
 1. Liquibase for database versioning
-1. Immutables.org for values object construction
-1. Jackson for values object serialization and deserialization
+1. Immutables.org for value object construction
+1. Jackson for value object serialization and deserialization
 
 # Architecture
 
 1. This service is uses domain driven design
 1. This service has hexagonal (onion) architecture
 1. Business functionality is covered with test cases for business logic (based on ATTD for acceptance criteria), MVC tests are used to test correctness of
-   requests and responses structures. 
+   request and response structures. 
     
