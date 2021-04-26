@@ -40,16 +40,21 @@ public class ArtistService {
     }
 
     public List<AlbumEntity> findArtistTopAlbums(Long artistId) {
+        // album data first is checked in the database
         List<AlbumEntity> albumEntities = albumRepository.findByArtistId(artistId);
+        // album data is filtered to skip too old data records (older that 7 days)
         List<AlbumEntity> actualAlbumEntities =
             albumEntities.stream()
                 .filter(albumEntity -> albumEntity.getUpdated().plus(maxAlbumDataAge, DAYS).isAfter(now()))
                 .collect(toList());
 
+        // if at least some relatively new data is found, then is it returned as artist album data
         if (!actualAlbumEntities.isEmpty()) {
             return actualAlbumEntities;
         }
 
+        // if no relatively new data is found, then itunes api (with api limit counter) is called
+        // and retrieved data is persisted in the database
         List<TopAlbumsResponse> topAlbums = httpItunesApiClientWrapper.findTopAlbums(artistId, topAlbumsLimit);
         return topAlbums.stream()
                    .map(this::createOrUpdateAlbumEntity)

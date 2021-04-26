@@ -31,6 +31,8 @@ Also, to minimize iTunes request count, spring cache is used for iTunes http cli
 1. Java
 1. Spring framework
 1. Spring Boot
+1. Spring Data
+1. H2 in memory database
 1. Liquibase for database versioning
 1. Immutables.org for values object construction
 1. Jackson for values object serialization and deserialization

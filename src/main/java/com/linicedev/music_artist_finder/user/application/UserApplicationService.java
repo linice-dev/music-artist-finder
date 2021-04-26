@@ -25,6 +25,8 @@ public class UserApplicationService {
         userFavouriteArtistService.saveUserFavouriteArtistService(userId, command);
     }
 
+    // searches for user in the database and if found, maps the user to favourite artist id and returns it
+    //  if user is not found, empty favourite artist is returned
     @Transactional(readOnly = true)
     public UserFavouriteArtist findFavouriteArtist(Long userId) {
         Optional<UserEntity> userEntity = userFavouriteArtistService.findUserById(userId);

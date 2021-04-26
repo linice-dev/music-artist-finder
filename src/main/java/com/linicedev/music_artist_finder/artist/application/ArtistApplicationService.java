@@ -28,6 +28,7 @@ public class ArtistApplicationService {
     public ArtistSearchResult searchArtists(String searchQueryParameter) {
         assertSearchQueryParameterIsValid(searchQueryParameter);
 
+        // search for artist and maps the result to response object
         ArtistSearchResponse searchResponse = artistService.findArtist(searchQueryParameter);
         List<Artist> artists = searchResponse.getResults()
                                    .stream()
@@ -43,6 +44,7 @@ public class ArtistApplicationService {
         return ArtistTopAlbums.from(artistService.findArtistTopAlbums(artistId));
     }
 
+    // validates if the search query is present. If search query is empty (or contains whitespace only), bad request error code is returned
     private void assertSearchQueryParameterIsValid(String searchQueryParameter) {
         if (StringUtils.isBlank(searchQueryParameter)) {
             throw new IllegalRequestParameterException("Artist search query parameter is missing");
