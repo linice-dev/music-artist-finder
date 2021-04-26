@@ -1,7 +1,9 @@
 package com.linicedev.music_artist_finder.artist.infrastructure.controller;
 
+import static com.linicedev.music_artist_finder.TestDataConstants.ARTIST_ID;
 import static com.linicedev.music_artist_finder.TestDataConstants.ARTIST_SEARCH_QUERY;
 import static com.linicedev.music_artist_finder.TestResourceUtils.readFile;
+import static com.linicedev.music_artist_finder.artist.application.ArtistTopAlbumsTestDataBuilder.mockArtistTopAlbums;
 import static com.linicedev.music_artist_finder.artist.infrastructure.controller.ArtistSearchResultTestDataBuilder.mockArtistSearchResult;
 import static com.linicedev.music_artist_finder.artist.infrastructure.controller.ArtistSearchResultTestDataBuilder.mockEmptyArtistSearchResult;
 import static net.javacrumbs.jsonunit.JsonAssert.assertJsonEquals;
@@ -9,6 +11,8 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -43,10 +47,10 @@ class ArtistControllerTest {
                                                   .contentType(APPLICATION_JSON))
                                       .andExpect(status().isOk())
                                       .andReturn();
-                     // Then
-                     assertJsonEquals(
-                         readFile("expected/artist-search-result.json"),
-                         mvcResult.getResponse().getContentAsString());
+            // Then
+            assertJsonEquals(
+                readFile("expected/artist-search-result.json"),
+                mvcResult.getResponse().getContentAsString());
         }
 
         @Test
@@ -64,5 +68,40 @@ class ArtistControllerTest {
                 readFile("expected/empty-artist-search-result.json"),
                 mvcResult.getResponse().getContentAsString());
         }
+    }
+
+    @Nested
+    class GetArtistAlbums {
+
+        @Test
+        public void returnsArtistTopAlbums() throws Exception {
+            given(artistApplicationService.findArtistTopAlbums(ARTIST_ID)).willReturn(mockArtistTopAlbums());
+
+            // When
+            MvcResult mvcResult = mvc.perform(get("/artist/{artistId}/top-albums", ARTIST_ID)
+                                                  .contentType(APPLICATION_JSON))
+                                      .andExpect(status().isOk())
+                                      .andReturn();
+            // Then
+            assertJsonEquals(
+                readFile("expected/artist-top-albums.json"),
+                mvcResult.getResponse().getContentAsString());
+        }
+
+        @Test
+        public void doesNotReturnArtistTopAlbumsGivenNoTopAlbumsAreFound() throws Exception {
+            given(artistApplicationService.findArtistTopAlbums(ARTIST_ID)).willReturn(mockArtistTopAlbums().withTopAlbums(List.of()));
+
+            // When
+            MvcResult mvcResult = mvc.perform(get("/artist/{artistId}/top-albums", ARTIST_ID)
+                                                  .contentType(APPLICATION_JSON))
+                                      .andExpect(status().isOk())
+                                      .andReturn();
+            // Then
+            assertJsonEquals(
+                readFile("expected/empty-artist-top-albums.json"),
+                mvcResult.getResponse().getContentAsString());
+        }
+
     }
 }

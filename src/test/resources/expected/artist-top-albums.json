@@ -1,0 +1,28 @@
+{
+  "topAlbums": [
+    {
+      "artistId": 372976,
+      "collectionId": 1422648512,
+      "amgArtistId": 3492,
+      "artistName": "ABBA",
+      "collectionName": "Gold: Greatest Hits",
+      "collectionCensoredName": "Gold: Greatest Hits",
+      "artistViewUrl": "https://music.apple.com/us/artist/abba/372976?uo=4",
+      "collectionViewUrl": "https://music.apple.com/us/album/gold-greatest-hits/1422648512?uo=4",
+      "artworkUrl60": "https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/29/55/05/29550595-ee55-5de9-24c6-01358267fc42/source/60x60bb.jpg",
+      "artworkUrl100": "https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/29/55/05/29550595-ee55-5de9-24c6-01358267fc42/source/100x100bb.jpg",
+      "collectionPrice": 7.99,
+      "collectionExplicitness": "notExplicit",
+      "trackCount": 19,
+      "copyright": "This Compilation 2014 Polar Music International AB",
+      "country": "USA",
+      "currency": "USD",
+      "releaseDate": [
+        2014,
+        1,
+        1
+      ],
+      "primaryGenreName": "Pop"
+    }
+  ]
+}

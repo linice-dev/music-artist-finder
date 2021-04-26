@@ -43,7 +43,7 @@ public class ArtistService {
         List<AlbumEntity> albumEntities = albumRepository.findByArtistId(artistId);
         List<AlbumEntity> actualAlbumEntities =
             albumEntities.stream()
-                .filter(albumEntity -> albumEntity.getUpdated().plus(maxAlbumDataAge, DAYS).isBefore(now()))
+                .filter(albumEntity -> albumEntity.getUpdated().plus(maxAlbumDataAge, DAYS).isAfter(now()))
                 .collect(toList());
 
         if (!actualAlbumEntities.isEmpty()) {

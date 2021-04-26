@@ -196,4 +196,8 @@ public class AlbumEntity implements Serializable {
     public LocalDateTime getUpdated() {
         return updated;
     }
+
+    public void setUpdated(LocalDateTime updated) {
+        this.updated = updated;
+    }
 }
