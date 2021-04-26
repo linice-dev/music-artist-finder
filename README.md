@@ -29,17 +29,17 @@ Also, to minimize iTunes request count, spring cache is used for iTunes HTTP API
 # What was used in this service
 
 1. Java
-1. Spring framework
-1. Spring Boot
-1. Spring Data
+1. Spring Framework
+1. Spring Boot Framework
+1. Spring Data Framework
 1. H2 in memory database
 1. Liquibase for database versioning
-1. Immutables.org for value object construction
-1. Jackson for value object serialization and deserialization
+1. Immutables.org processor for value object construction
+1. Jackson processor for value object serialization and deserialization
 
 # Architecture
 
-1. This service is uses domain driven design
+1. This service uses domain driven design
 1. This service has hexagonal (onion) architecture
 1. Business functionality is covered with test cases for business logic (based on ATTD for acceptance criteria), MVC tests are used to test correctness of
    request and response structures. 
